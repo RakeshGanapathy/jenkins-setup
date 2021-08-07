@@ -4,7 +4,7 @@ Parameters:
   InstanceType:
     Description: WebServer EC2 instance type
     Type: String
-    Default: t2.medium
+    Default: t2.micro
   AmazonImageID:
     Description: The ID of the Amazon machine image (AMI)
     Type: String
@@ -103,8 +103,6 @@ Resources:
       - arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore
       - arn:aws:iam::aws:policy/AWSCloudFormationFullAccess
       - arn:aws:iam::aws:policy/AmazonS3FullAccess
-      - arn:aws:iam::aws:policy/EC2InstanceProfileForImageBuilderECRContainerBuilds
-      - arn:aws:iam::aws:policy/AmazonECS_FullAccess
       Path: "/"
       RoleName: !Ref JenkinsAutomationRole
 
@@ -132,18 +130,5 @@ Resources:
               - s3:PutObject
               Resource: 
               - !Sub 'arn:aws:s3:::${BucketPrefix}*'
-            - Sid: "ECRRepo"
-              Effect: Allow
-              Action:
-              - ecr:CreateRepository
-              - iam:GetRole
-              - iam:CreateRole
-              - ecs:DescribeClusters
-              - iam:CreateRole
-              - iam:AttachRolePolicy
-              - logs:CreateLogGroup
-              Resource: 
-              - *
-
         Roles:
            - !Ref JenkinsAutomationRole
