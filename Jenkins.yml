@@ -21,10 +21,6 @@ Parameters:
     Description: ManagedPolicy for JenkinsAutomationRole of an instance
     Type: String
     Default: PutS3ObjectPolicy
-  BucketPrefix:
-    Description: The BucketPrefix of an instance
-    Type: String
-    Default: cfm-s3
 
 Resources:
 
