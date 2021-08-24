@@ -17,10 +17,6 @@ Parameters:
     Description: The JenkinsAutomationProfile for JenkinsAutomationRole of an instance
     Type: String
     Default: JenkinsAutomationProfile
-  IAMManagedPolicy:
-    Description: ManagedPolicy for JenkinsAutomationRole of an instance
-    Type: String
-    Default: PutS3ObjectPolicy
 
 Resources:
 
