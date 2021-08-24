@@ -113,22 +113,4 @@ Resources:
       Path: "/"
       Roles:
       - !Ref EC2SSMRole
-      InstanceProfileName: !Ref JenkinsAutomationProfile   
-  
-  S3ManagedPolicy:
-    DependsOn: EC2SSMRole
-    Type: AWS::IAM::ManagedPolicy
-    Properties:
-        Description: Policy for putting S3 Objects
-        ManagedPolicyName: !Ref IAMManagedPolicy
-        PolicyDocument:
-            Version: '2012-10-17'
-            Statement:
-            - Sid: "S3Policy"
-              Effect: Allow
-              Action:
-              - s3:PutObject
-              Resource: 
-              - !Sub 'arn:aws:s3:::${BucketPrefix}*'
-        Roles:
-           - !Ref JenkinsAutomationRole
+      InstanceProfileName: !Ref JenkinsAutomationProfile
